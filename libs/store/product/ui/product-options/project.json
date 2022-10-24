@@ -1,0 +1,18 @@
+{
+  "name": "store-product-ui-product-options",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/store/product/ui/product-options/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/store/product/ui/product-options/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
   "plugins": ["@nrwl/nx"],
   "overrides": [
     {
@@ -18,13 +17,37 @@
               }
             ]
           }
+        ],
+
+        "import/order": [
+          "error",
+          {
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              ["parent", "sibling"],
+              "index"
+            ],
+            "newlines-between": "always"
+          }
         ]
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@next/next/no-img-element": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/ban-types": "off",
+        "jsx-a11y/alt-text": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

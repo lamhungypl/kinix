@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "ecom-kiti",
+  "npmScope": "kiti",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
@@ -38,15 +38,45 @@
   "generators": {
     "@nrwl/react": {
       "application": {
-        "babel": true
+        "babel": true,
+        "style": "styled-components",
+        "linter": "eslint"
+      },
+      "component": {
+        "style": "styled-components",
+        "pascalCaseFiles": true,
+        "pascalCaseDirectory": true,
+        "skipTests": true,
+        "export": true
+      },
+      "library": {
+        "style": "styled-components",
+        "unitTestRunner ": "none",
+        "export": true,
+        "pascalCaseFiles": true,
+        "pascalCaseDirectory": true,
+        "strict": false
       }
     },
     "@nrwl/next": {
       "application": {
         "style": "styled-components",
         "linter": "eslint"
+      },
+      "component": {
+        "style": "styled-components",
+        "skipTests": true,
+        "export": true
+      },
+      "library": {
+        "style": "styled-components",
+        "unitTestRunner ": "none",
+        "export": true,
+        "pascalCaseFiles": true,
+        "pascalCaseDirectory": true,
+        "strict": false
       }
     }
   },
-  "defaultProject": "ecom-kiti"
+  "defaultProject": "sales"
 }

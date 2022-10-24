@@ -1,0 +1,26 @@
+{
+  "name": "store-cart-ui-header-cart-icon",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/store/cart/ui/header-cart-icon/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/store/cart/ui/header-cart-icon/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/store/cart/ui/header-cart-icon/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

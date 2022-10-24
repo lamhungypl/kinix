@@ -1,0 +1,18 @@
+{
+  "name": "shared-ui-max-line-helper",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/ui/max-line-helper/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/ui/max-line-helper/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "shared-ui-app-layout",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/ui/app-layout/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/ui/app-layout/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

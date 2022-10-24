@@ -1,0 +1,18 @@
+{
+  "name": "shared-ui-image-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/ui/image-preview/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/ui/image-preview/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}

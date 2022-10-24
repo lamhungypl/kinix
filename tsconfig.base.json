@@ -15,7 +15,71 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ecom-kiti/ui": ["libs/ui/src/index.ts"]
+      "@kiti/shared/hooks/use-modal": [
+        "libs/shared/hooks/use-modal/src/index.ts"
+      ],
+      "@kiti/shared/ui/app-background-image": [
+        "libs/shared/ui/app-background-image/src/index.ts"
+      ],
+      "@kiti/shared/ui/app-icons": ["libs/shared/ui/app-icons/src/index.ts"],
+      "@kiti/shared/ui/app-layout": ["libs/shared/ui/app-layout/src/index.ts"],
+      "@kiti/shared/ui/app-modal": ["libs/shared/ui/app-modal/src/index.ts"],
+      "@kiti/shared/ui/image-preview": [
+        "libs/shared/ui/image-preview/src/index.ts"
+      ],
+      "@kiti/shared/ui/image-slider": [
+        "libs/shared/ui/image-slider/src/index.ts"
+      ],
+      "@kiti/shared/ui/image-wrapper": [
+        "libs/shared/ui/image-wrapper/src/index.ts"
+      ],
+      "@kiti/shared/ui/max-line-helper": [
+        "libs/shared/ui/max-line-helper/src/index.ts"
+      ],
+      "@kiti/shared/ui/picture": ["libs/shared/ui/picture/src/index.ts"],
+      "@kiti/shared/ui/theme": ["libs/shared/ui/theme/src/index.ts"],
+      "@kiti/shared/utils/currency-helpers": [
+        "libs/shared/utils/currency-helpers/src/index.ts"
+      ],
+      "@kiti/shared/utils/image-helpers": [
+        "libs/shared/utils/image-helpers/src/index.ts"
+      ],
+      "@kiti/store/cart/ui/header-cart-icon": [
+        "libs/store/cart/ui/header-cart-icon/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-detail-header": [
+        "libs/store/product/ui/product-detail-header/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-information": [
+        "libs/store/product/ui/product-information/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-normal": [
+        "libs/store/product/ui/product-normal/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-options": [
+        "libs/store/product/ui/product-options/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-page-header": [
+        "libs/store/product/ui/product-page-header/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-page-modal": [
+        "libs/store/product/ui/product-page-modal/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-price": [
+        "libs/store/product/ui/product-price/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-properties": [
+        "libs/store/product/ui/product-properties/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-styled": [
+        "libs/store/product/ui/product-styled/src/index.ts"
+      ],
+      "@kiti/store/product/ui/product-variants": [
+        "libs/store/product/ui/product-variants/src/index.ts"
+      ],
+      "@kiti/store/product/utils/product-helpers": [
+        "libs/store/product/utils/product-helpers/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
