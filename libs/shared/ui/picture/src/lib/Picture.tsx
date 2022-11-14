@@ -29,7 +29,7 @@ const StyledPicture = styled.div<PictureProps & { loaded?: boolean }>`
     width && !dimensions ? `${width}px` : null};
   height: ${({ height, dimensions }) =>
     height && !dimensions ? `${height}px` : null};
-  padding-top: ${({ dimensions }) => {
+  padding-top: ${({ dimensions = '1x1' }) => {
     const [width, height] = dimensions.split('x');
     return isEmpty(dimensions) ? null : `${(height / width) * 100}%`;
   }};

@@ -1,0 +1,62 @@
+{
+  "name": "merchant",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/merchant",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/merchant",
+        "outputPath": "dist/apps/merchant"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/merchant"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "buildTarget": "merchant:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "merchant:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "merchant:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "merchant:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/merchant/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

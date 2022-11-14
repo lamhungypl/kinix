@@ -1,20 +1,29 @@
-import styled from 'styled-components';
+import { ProductCouponSection } from '@kiti/store/product/ui/product-coupon-section';
+import { ProductInformationSection } from '@kiti/store/product/ui/product-information';
 
-/* eslint-disable-next-line */
-export interface StoreProductUiProductNormalProps {}
-
-const StyledStoreProductUiProductNormal = styled.div`
-  color: pink;
-`;
-
-export function StoreProductUiProductNormal(
-  props: StoreProductUiProductNormalProps
-) {
+export const ProductNormal = () => {
+  const checkLoadingServer = false;
   return (
-    <StyledStoreProductUiProductNormal>
-      <h1>Welcome to StoreProductUiProductNormal!</h1>
-    </StyledStoreProductUiProductNormal>
+    <>
+      <ProductInformationSection />
+      {checkLoadingServer ? (
+        <div
+          style={{
+            width: '100%',
+            minHeight: 200,
+            background: 'white',
+          }}
+        />
+      ) : (
+        <div
+          style={{
+            width: '100%',
+            minHeight: 200,
+          }}
+        >
+          <ProductCouponSection />
+        </div>
+      )}
+    </>
   );
-}
-
-export default StoreProductUiProductNormal;
+};

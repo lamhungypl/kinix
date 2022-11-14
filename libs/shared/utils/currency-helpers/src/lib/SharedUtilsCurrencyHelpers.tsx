@@ -1,4 +1,4 @@
-export const convertPriceVND = (t: string) => {
+export const convertPriceVND = (t: string | number) => {
   const e = (t += '').split('.');
   let n = e[0];
   const r = e.length > 1 ? `.${e[1]}` : '';

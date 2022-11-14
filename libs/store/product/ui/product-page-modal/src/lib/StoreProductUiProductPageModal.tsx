@@ -1,12 +1,10 @@
 import { AppModal } from '@kiti/shared/ui/app-modal';
 import { colors } from '@kiti/shared/ui/theme';
+import { actionNames, modalProps } from '@kiti/shared/utils/app-store';
 import { ProductPageHeader } from '@kiti/store/product/ui/product-page-header';
 import { ProductProperties } from '@kiti/store/product/ui/product-properties';
 import React from 'react';
 import styled from 'styled-components';
-
-import { modalProps } from './data';
-import { actionNames } from './modalAction';
 
 export const StyledProductPageModal = styled.div`
   margin: 56px 0px 0px;
@@ -109,6 +107,7 @@ export class ProductPageModal extends React.Component<Props, State> {
   render() {
     const { actionModal, onCloseHandler, ...rest } = modalProps;
     const { isOpen, actionName, title, data, isImportModal } = actionModal;
+    const { onCloseHandler: onClose } = this.props;
 
     return isImportModal ? (
       <AppModal
@@ -137,7 +136,7 @@ export class ProductPageModal extends React.Component<Props, State> {
           <ProductPageHeader
             title={title}
             closeable={true}
-            actionHandler={onCloseHandler}
+            actionHandler={onClose}
             style={this.getCustomHeaderStyle(actionName)}
           />
           {this.renderActionComponent(actionName, data)}

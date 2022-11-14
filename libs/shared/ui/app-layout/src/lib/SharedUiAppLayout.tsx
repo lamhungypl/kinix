@@ -5,17 +5,6 @@ import NProgress from 'nprogress';
 import React, { useEffect, useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-const DynamicHeaderProductPage = dynamic(
-  () =>
-    import('@kiti/store/product/ui/product-detail-header').then(
-      ({ ProductDetailHeader }) => ProductDetailHeader
-    ),
-  {
-    ssr: true,
-    loading: () => null,
-  }
-);
-
 const GlobalLayoutStyle = createGlobalStyle`
   *::-webkit-scrollbar{display:none;}
 `;
@@ -84,38 +73,15 @@ type Props = React.PropsWithChildren<{
 
 export const MainLayout: React.FC<Props> = (props) => {
   const { children, layout, mainStyle, className } = props;
-  const [isInstallBanner, setIsInstallBanner] = useState(false);
-
-  const hideInstallBanner = () => {
-    setIsInstallBanner(false);
-  };
 
   useEffect(() => {
     handleProcessBar();
   }, []);
 
-  const renderHeader = () => {
-    const { layout = '', title = '' } = props;
-    switch (layout) {
-      case 'empty':
-        return null;
-      case 'productPage':
-        return (
-          <DynamicHeaderProductPage
-            isInstallBanner={isInstallBanner}
-            hideBanner={hideInstallBanner}
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
-  const safeMarginTop = layout === 'productPage' ? 0 : 0;
+  const safeMarginTop = layout ? 70 : 0;
 
   return (
     <div className={className}>
-      {renderHeader()}
       <main style={{ ...{ marginTop: safeMarginTop }, ...mainStyle }}>
         {children}
       </main>

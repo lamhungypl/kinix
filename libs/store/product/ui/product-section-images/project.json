@@ -1,0 +1,18 @@
+{
+  "name": "store-product-ui-product-section-images",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/store/product/ui/product-section-images/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/store/product/ui/product-section-images/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}

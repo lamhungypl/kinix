@@ -1,4 +1,5 @@
 import { colors } from '@kiti/shared/ui/theme';
+import { getSelector } from '@kiti/shared/utils/app-store';
 import styled from 'styled-components';
 
 const StyledHeaderCart = styled.a`
@@ -30,13 +31,20 @@ const StyledHeaderCart = styled.a`
 `;
 
 type Props = React.PropsWithChildren<{
-  className: any;
-  icon: any;
-  style: any;
+  className?: any;
+  icon?: any;
+  style?: any;
 }>;
 
 export const HeaderCartIcon = (props: Props) => {
-  const cartItemCount = 0 || 10;
+  const items_qty = getSelector(
+    (store) => store?.mobile?.common?.cartsMineInfo?.items_qty
+  );
+  const cart_item_count = getSelector(
+    (store) => store?.mobile?.common?.userInfo?.cart_item_count
+  );
+
+  const cartItemCount = items_qty || cart_item_count || 0;
   const { className, icon, style } = props;
 
   return (

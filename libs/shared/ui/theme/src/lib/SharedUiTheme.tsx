@@ -14,6 +14,14 @@ export const extraColor = {
   green_10: '#EFFFF4',
   blue_10: '#F0F8FF',
   blue_70: '#0B74E5',
+  purple_10: '#F2F0FE',
+  purple_20: '#ECE9FD',
+  purple_30: '#DFD9FA',
+  purple_50: '#FAF9FF',
+  purple_60: '#856EFA',
+  purple_70: '#6F55ED',
+  purple_80: '#5A41D9',
+  purple_90: '#402DA1',
 };
 
 const extraColors = {
@@ -115,6 +123,7 @@ export const colors = {
   orange_60: '#fc820a',
   blue_80: '#0D5BB5',
   ...extraColors,
+  ...extraColor,
 };
 
 export const SomeTheme = css`

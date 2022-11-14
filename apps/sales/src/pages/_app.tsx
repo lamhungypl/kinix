@@ -1,8 +1,9 @@
+import { GlobalUserAgentStyle } from '@kiti/shared/ui/app-global-style';
+import { AppNormalize } from '@kiti/shared/ui/app-normalize';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ReactElement, ReactNode } from 'react';
-import './styles.css';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -14,7 +15,6 @@ type AppPropsWithLayout = AppProps & {
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
-  console.log({ getLayout });
 
   return (
     <>
@@ -22,6 +22,8 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <title>Welcome to kiti!</title>
       </Head>
       {getLayout(<Component {...pageProps} />)}
+      <AppNormalize />
+      <GlobalUserAgentStyle />
     </>
   );
 }
