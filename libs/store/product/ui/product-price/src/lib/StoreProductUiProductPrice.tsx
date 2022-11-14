@@ -1,3 +1,4 @@
+import { convertPriceVND } from '@kiti/shared/utils/currency-helpers';
 import React, { memo } from 'react';
 import styled from 'styled-components';
 
@@ -34,7 +35,11 @@ export const ProductPrice = memo((props: ProductPriceProps) => {
   return (
     <StyledProductPrice {...rest}>
       <div className="product-price">
-        {price && <span className="product-price__current-price">{price}</span>}
+        {price && (
+          <span className="product-price__current-price">
+            {convertPriceVND(price)}
+          </span>
+        )}
         {listPrice && price && price && listPrice && (
           <>
             <span className="product-price__list-price">{listPrice}</span>

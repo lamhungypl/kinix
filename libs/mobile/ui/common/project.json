@@ -1,0 +1,16 @@
+{
+  "name": "mobile-ui-common",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/mobile/ui/common/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/mobile/ui/common/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

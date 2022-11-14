@@ -2,6 +2,7 @@ import { useModal1 } from '@kiti/shared/hooks/use-modal';
 import { ImagePreview } from '@kiti/shared/ui/image-preview';
 import { ImageWrapper } from '@kiti/shared/ui/image-wrapper';
 import { MaxLineHelper } from '@kiti/shared/ui/max-line-helper';
+import { modalProps } from '@kiti/shared/utils/app-store';
 import { getStoredImageURL } from '@kiti/shared/utils/image-helpers';
 import ProductOptions from '@kiti/store/product/ui/product-options';
 import { ProductPrice } from '@kiti/store/product/ui/product-price';
@@ -30,7 +31,7 @@ const Noop = () => {};
 type Props = {
   handleProductActionModal?: any;
   updateSelectConfigurable: any;
-  actionModal?: any;
+  // actionModal?: any;
   onDone: any;
 };
 
@@ -38,10 +39,11 @@ export const ProductProperties = (props: Props) => {
   const {
     handleProductActionModal,
     updateSelectConfigurable,
-    actionModal,
     onDone,
     ...restProps
   } = props;
+
+  const actionModal = modalProps.actionModal;
 
   const actionModalData = actionModal.data;
   const {
@@ -76,17 +78,17 @@ export const ProductProperties = (props: Props) => {
   }, [configurable_products, productPropertiesState.productOptions]);
 
   const {
-    product: state_product = {},
+    product: state_product = {} as any,
     productOptions,
-    selectedProduct: state_selectedProduct,
+    selectedProduct: state_selectedProduct = {} as any,
     selectedProductImages: state_selectedProductImages = [],
     isSelectFullOptions: state_isSelectFullOptions,
   } = productPropertiesState;
 
-  const state_productId = state_product.id;
+  const state_productId = state_product?.id;
 
-  const currentSellerName = state_product.current_seller?.name;
-  const state_productName = state_product.name;
+  const currentSellerName = state_product?.current_seller?.name;
+  const state_productName = state_product?.name;
 
   const {
     price: state_selectedProductPrice,
@@ -104,7 +106,7 @@ export const ProductProperties = (props: Props) => {
     state_selectedProductImages[0]?.image?.medium_url || '';
 
   const isAddToCart = actionModalData.isAddToCart;
-  const addToCartHandler = actionModalData.addToCartHandler;
+  // const addToCartHandler = actionModalData.addToCartHandler;
   const selectedProductId = state_selectedProduct.id;
 
   const productOptionsValues = useMemo(
@@ -123,7 +125,7 @@ export const ProductProperties = (props: Props) => {
     ];
 
     if (isAddToCart) {
-      addToCartHandler(someN);
+      // addToCartHandler(someN);
     }
 
     if (onDone && typeof onDone === 'function') {
@@ -183,32 +185,32 @@ export const ProductProperties = (props: Props) => {
           <MaxLineHelper maxLine={2} style={{ marginBottom: 4 }}>
             <Text>{state_productName}</Text>
           </MaxLineHelper>
+          {state_selectedProductPrice && (
+            <>
+              <MaxLineHelper maxLine={1} style={{ height: 16 }}>
+                <SecondaryText small as="span">
+                  {`${optionsString}:\xa0`}
+                </SecondaryText>
+                <Text small bold as="span">
+                  {valuesString}
+                </Text>
+              </MaxLineHelper>
+              <MaxLineHelper maxLine={1} style={{ height: 16 }}>
+                <SecondaryText small as="span">
+                  Cung cấp bởi:\xa0
+                </SecondaryText>
+                <Text small bold as="span">
+                  {currentSellerName}
+                </Text>
+              </MaxLineHelper>
+              <ProductPrice
+                price={state_selectedProductPrice}
+                listPrice={0}
+                discountRate={0}
+              />
+            </>
+          )}
         </TextDetailContainer>
-        {state_selectedProductPrice && (
-          <>
-            <MaxLineHelper maxLine={1} style={{ height: 16 }}>
-              <SecondaryText small as="span">
-                {`${optionsString}:\xa0`}
-              </SecondaryText>
-              <Text small bold as="span">
-                {valuesString}
-              </Text>
-            </MaxLineHelper>
-            <MaxLineHelper maxLine={1} style={{ height: 16 }}>
-              <SecondaryText small as="span">
-                Cung cấp bởi:\xa0
-              </SecondaryText>
-              <Text small bold as="span">
-                {currentSellerName}
-              </Text>
-            </MaxLineHelper>
-            <ProductPrice
-              price={state_selectedProductPrice}
-              listPrice={0}
-              discountRate={0}
-            />
-          </>
-        )}
       </ProductInfoHeader>
 
       {productOptions.length && (

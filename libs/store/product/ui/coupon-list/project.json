@@ -1,0 +1,18 @@
+{
+  "name": "store-product-ui-coupon-list",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/store/product/ui/coupon-list/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/store/product/ui/coupon-list/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}

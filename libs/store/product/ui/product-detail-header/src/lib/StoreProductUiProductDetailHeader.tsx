@@ -1,4 +1,5 @@
 import { colors } from '@kiti/shared/ui/theme';
+import { useDataSelector } from '@kiti/shared/utils/app-store';
 import { HeaderCartIcon } from '@kiti/store/cart/ui/header-cart-icon';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
@@ -7,17 +8,12 @@ import styled from 'styled-components';
 
 // import moreMenuBg from './more-menu-bg.svg';
 
-type Props = {
-  hideBanner?: any;
-  productDetail?: any;
-  isInstallBanner?: boolean;
-};
-
 const StyledWrapper = styled.div`
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
+  right: 0;
 `;
 
 const StyledHeader = styled.header`
@@ -124,16 +120,45 @@ const ImgLike = ({ liked }: { liked: boolean }) => {
   );
 };
 
-export const ProductDetailHeader = ({
-  productDetail,
-  isInstallBanner,
-}: Props) => {
+type Props = {
+  hideBanner?: any;
+  productDetail?: any;
+  isInstallBanner?: boolean;
+};
+
+export const ProductDetailHeader = ({ isInstallBanner }: Props) => {
   const router = useRouter();
+  const { productDetail } = useDataSelector();
+  const { id, contextual } = productDetail;
+  const isContextual = !!contextual;
 
   const [liked, setLiked] = useState(false);
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [transparent, setTransparent] = useState('0');
 
+  const iconBackColor = isContextual
+    ? 'Blue'
+    : '0' === transparent
+    ? 'White'
+    : 'Blue';
+
+  const iconBackground = isContextual
+    ? ''
+    : '0' === transparent
+    ? '#24242480'
+    : '';
+
+  const iconCart = (
+    <img
+      // className="more-icon icon"
+      alt="cart"
+      width={20}
+      height={20}
+      src={`https://frontend.tikicdn.com/_mobile-next/static/img/icons/cart${
+        isContextual || '0' !== transparent ? 'Blue' : ''
+      }.svg`}
+    />
+  );
   const handleAnimationHeader = useCallback(() => {
     const animateTransparent =
       window.scrollY < 20
@@ -180,11 +205,10 @@ export const ProductDetailHeader = ({
     };
   }, [handleAnimationHeader]);
 
-  const iconBackground = transparent === '0' ? '#24242480' : '';
   return (
     <StyledWrapper
       style={{
-        position: 'sticky',
+        position: isContextual ? 'sticky' : 'fixed',
         borderBottom: '1px solid rgb(239, 239, 239)',
       }}
     >
@@ -195,7 +219,7 @@ export const ProductDetailHeader = ({
           <img
             alt="back"
             style={{ background: iconBackground }}
-            src="https://frontend.tikicdn.com/_mobile-next/static/img/icons/back.svg"
+            src={`https://frontend.tikicdn.com/_mobile-next/static/img/icons/back${iconBackColor}.svg`}
             onClick={goBack}
           />
         </div>
@@ -204,33 +228,15 @@ export const ProductDetailHeader = ({
             <HeaderCartIcon
               className="icon-margin icon"
               style={{ background: iconBackground }}
-              icon={
-                <img
-                  className="more-icon icon"
-                  style={{ background: iconBackground }}
-                  alt="cart"
-                  width={20}
-                  height={20}
-                  src="https://frontend.tikicdn.com/_mobile-next/static/img/icons/cartBlue.svg"
-                />
-              }
-            >
-              <img
-                className="more-icon icon"
-                style={{ background: iconBackground }}
-                alt="cart"
-                width={20}
-                height={20}
-                src="https://frontend.tikicdn.com/_mobile-next/static/img/icons/cartBlue.svg"
-              />
-            </HeaderCartIcon>
+              icon={iconCart}
+            />
           </div>
           <div className="more-wrapper">
             <img
               className="more-icon icon"
               style={{ background: iconBackground }}
               alt="more"
-              src="https://frontend.tikicdn.com/_mobile-next/static/img/icons/moreWhite.svg"
+              src={`https://frontend.tikicdn.com/_mobile-next/static/img/icons/more${iconBackColor}.svg`}
               onClick={toggleShowMoreMenu}
             />
             <div
